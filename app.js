@@ -70,6 +70,7 @@ function switchLoop() {
 
 operators.forEach((operator) => {
   operator.addEventListener('click', () => {
+
     if (isFirstNum === true) {
       switchLoop();
 
@@ -116,11 +117,42 @@ operators.forEach((operator) => {
   });
 });
 
+// ZERO 
+
+const zeroBtn = document.querySelector('.num-button-zero');
+
+zeroBtn.addEventListener('click', function() {
+  if (isFirstNum) {
+    if (storedNums === '') {
+      return; // Prevent adding a second zero at the beginning
+    }
+    storedNums += zeroBtn.innerText;
+    document.querySelector('.number').innerText = storedNums;
+  } 
+  else {
+
+    if (secondNums === '') {
+      // secondNums += zeroBtn.innerHTML;
+      document.querySelector('.sec-num').textContent = '0'; // displays 0, but does not actually contribute to the real number
+    } else if (secondNums.includes('0')) {
+      return;
+    }
+
+    // secondNums += zeroBtn.innerText;
+    // document.querySelector('.sec-num').innerText = secondNums;
+    console.log(secondNums)
+  }
+});
 
 // CALCULATE 
 const equalsSign = document.querySelector('.equals-sign')
 
 equalsSign.addEventListener('click', function() {
+  // prevents from calculating, if first or second num is empty;
+  if (storedNums === '' || secondNums === '') {
+    return;
+  }
+
   let fullNumbers = '';
 
   fullNumbers += number.innerHTML + " " + secondNums;
@@ -138,6 +170,8 @@ equalsSign.addEventListener('click', function() {
   isFirstNum = true;
 
   console.log(storedNums);
+
+
 })
 
 
@@ -214,20 +248,23 @@ deleteBtn.addEventListener('click', function() {
 const dot = document.querySelector('.dot');
 
 dot.addEventListener('click', function() {
-  if (isFirstNum === true) {
-    storedNums.toString();
+  if (isFirstNum) {
 
-    storedNums += '.';
-
+    if (storedNums === '') {
+      storedNums = '0.';
+    } else if (!storedNums.includes('.')) {
+      // if number doesnt already include a dot, it will add a dot
+      storedNums += '.';
+    }
     number.textContent = storedNums;
-
-    console.log(storedNums);
-  }
-  else {
-    secondNums.toString();
-
-    secondNums += '.';
-
+    
+  } else {
+    if (secondNums === '') {
+      secondNums = '0.';
+    } else if (!secondNums.includes('.')) {
+      secondNums += '.';
+    }
     document.querySelector('.sec-num').textContent = secondNums;
   }
-})
+});                  
+

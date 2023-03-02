@@ -1,3 +1,21 @@
+*, *::after, *::before {
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+}
+
+.calculator-wrap {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    height: 100vh;
+}
+
+.calculator {
+    background-color: grey;
+}
+
 .num-display {
     font-family: 'Courier New', Courier, monospace;
 }
