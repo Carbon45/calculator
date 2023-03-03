@@ -61,6 +61,8 @@ function addNumToDisplay(button) {
 numButtons.forEach((button) => {
   button.addEventListener('click', () => {
     addNumToDisplay(button);
+    calcClick.currentTime = 0;
+    calcClick.play();
   });
 });
 
@@ -70,6 +72,9 @@ function switchLoop() {
 
 operators.forEach((operator) => {
   operator.addEventListener('click', () => {
+    // plays audio
+    calcClick.currentTime = 0;
+    calcClick.play();
 
     if (isFirstNum === true) {
       switchLoop();
@@ -122,6 +127,9 @@ operators.forEach((operator) => {
 const zeroBtn = document.querySelector('.num-button-zero');
 
 zeroBtn.addEventListener('click', function() {
+  calcClick.currentTime = 0;
+  calcClick.play();
+
   if (isFirstNum) {
     if (storedNums === '') {
       return; // Prevent adding a second zero at the beginning
@@ -148,6 +156,9 @@ zeroBtn.addEventListener('click', function() {
 const equalsSign = document.querySelector('.equals-sign')
 
 equalsSign.addEventListener('click', function() {
+  calcClick.currentTime = 0;
+  calcClick.play();
+
   // prevents from calculating, if first or second num is empty;
   if (storedNums === '' || secondNums === '') {
     return;
@@ -206,6 +217,9 @@ function calculate(str) {
 const clearBtn = document.querySelector('.clear-btn');
 
 clearBtn.addEventListener('click', function() {
+  calcClick.currentTime = 0;
+  calcClick.play();
+
   if (document.querySelector('.sec-num') !== null) {
     number.innerHTML = '';
     document.querySelector('.sec-num').remove();
@@ -224,6 +238,9 @@ clearBtn.addEventListener('click', function() {
 const deleteBtn = document.querySelector('.delete-btn');
 
 deleteBtn.addEventListener('click', function() {
+  calcClick.currentTime = 0;
+  calcClick.play();
+
   if (isFirstNum === true) {
     storedNums.toString();
 
@@ -248,6 +265,9 @@ deleteBtn.addEventListener('click', function() {
 const dot = document.querySelector('.dot');
 
 dot.addEventListener('click', function() {
+  calcClick.currentTime = 0;
+  calcClick.play();
+
   if (isFirstNum) {
 
     if (storedNums === '') {
@@ -268,3 +288,6 @@ dot.addEventListener('click', function() {
   }
 });                  
 
+// AUDIO 
+
+const calcClick = document.querySelector('.calc-click')

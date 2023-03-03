@@ -14,8 +14,80 @@
 
 .calculator {
     background-color: grey;
+
+    padding: 1em;
 }
 
 .num-display {
     font-family: 'Courier New', Courier, monospace;
+}
+
+/* BUTTONS  */
+
+.buttons-wrap {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+}
+
+.buttons-wrap button {
+    width: 5em;
+    height: 5em;
+
+    font-size: 1.25rem;
+
+    margin: .25em;
+
+    cursor: pointer;
+}
+
+.clear-delete-wrap {
+    display: flex;
+    width: 100%;
+
+    margin-top: 1em;
+
+    margin-bottom: 1em;
+}
+
+.clear-btn {
+    width: 100%;
+
+    padding: .5em 0;
+
+    font-size: 1.75rem;
+
+    margin: .25em;
+
+    cursor: pointer;
+}
+
+.delete-btn {
+    width: 100%;
+    
+    padding: .5em 0;
+
+    font-size: 1.75rem;
+
+    margin: .25em;
+
+    cursor: pointer;
+}
+
+/* NUM DISPLAY  */
+
+.num-display {
+  background-color: lightgreen;
+  text-align: right;
+  padding: 1em;
+  margin: .25em;
+  
+  word-wrap: break-word;
+
+  width: 27rem;
+
+  margin: 0 auto;
+}
+
+.number {
+    white-space: pre-line;
 }
