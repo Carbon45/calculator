@@ -70,13 +70,19 @@ function switchLoop() {
   isFirstNum = !isFirstNum;
 }
 
+// OPERATORS
 operators.forEach((operator) => {
   operator.addEventListener('click', () => {
+    // flag for if there is an operator
+    let operatorPresent = false;
+
     // plays audio
     calcClick.currentTime = 0;
     calcClick.play();
 
-    if (isFirstNum === true) {
+    if (isFirstNum === true && number.innerHTML !== '0' && storedNums !== '') {
+      operatorPresent = true;
+
       switchLoop();
 
       // create the second number element
@@ -84,14 +90,18 @@ operators.forEach((operator) => {
       secNumEl.classList.add('sec-num');
       numDisplay.appendChild(secNumEl);
   
-      // clear the second number
-      // secondNums = '';
-      // numDisplay.querySelector('.sec-num').innerText = '';
-  
       // display the operator
       numDisplay.querySelector('.number').innerText += ` ${operator.innerText}`;
+    }
 
-      console.log(storedNums);
+    else if (number.innerHTML === '0' && storedNums === '') {
+      return;
+    }
+    
+    else if (operatorPresent = true) {
+      // if there there is an operator, then we want to delete the current operator and then replace it with the other operator
+      number.textContent = `${storedNums}`;                          
+      number.textContent += ` ${operator.innerText}`;
     }
     else {
       isFirstNum === false;
@@ -142,13 +152,12 @@ zeroBtn.addEventListener('click', function() {
     if (secondNums === '') {
       // secondNums += zeroBtn.innerHTML;
       document.querySelector('.sec-num').textContent = '0'; // displays 0, but does not actually contribute to the real number
-    } else if (secondNums.includes('0')) {
       return;
-    }
+    } 
 
-    // secondNums += zeroBtn.innerText;
-    // document.querySelector('.sec-num').innerText = secondNums;
-    console.log(secondNums)
+    secondNums += zeroBtn.innerText;  
+    document.querySelector('.sec-num').innerText = secondNums;
+    // console.log(secondNums)  
   }
 });
 
