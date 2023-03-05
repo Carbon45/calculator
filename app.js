@@ -54,7 +54,6 @@ function addNumToDisplay(button) {
   } else {
     secondNums += button.innerText;
     document.querySelector('.sec-num').innerText = secondNums;
-    console.log(secondNums)
   }
 }
 
@@ -110,7 +109,6 @@ operators.forEach((operator) => {
 
       fullNumbers += number.innerHTML + " " + secondNums;
     
-      console.log(fullNumbers)  
       const numResult = calculate(fullNumbers);
     
       number.textContent = `${numResult} ${operator.textContent}`
@@ -125,8 +123,6 @@ operators.forEach((operator) => {
       secNumEl.classList.add('sec-num');
       numDisplay.appendChild(secNumEl);
     
-      console.log(isFirstNum);
-      // isFirstNum = true;    
     }
 
   });
@@ -150,14 +146,12 @@ zeroBtn.addEventListener('click', function() {
   else {
 
     if (secondNums === '') {
-      // secondNums += zeroBtn.innerHTML;
       document.querySelector('.sec-num').textContent = '0'; // displays 0, but does not actually contribute to the real number
       return;
     } 
 
     secondNums += zeroBtn.innerText;  
     document.querySelector('.sec-num').innerText = secondNums;
-    // console.log(secondNums)  
   }
 });
 
@@ -165,8 +159,8 @@ zeroBtn.addEventListener('click', function() {
 const equalsSign = document.querySelector('.equals-sign')
 
 equalsSign.addEventListener('click', function() {
-  calcClick.currentTime = 0;
-  calcClick.play();
+  calcClick3.currentTime = 0;
+  calcClick3.play();
 
   // prevents from calculating, if first or second num is empty;
   if (storedNums === '' || secondNums === '') {
@@ -177,7 +171,6 @@ equalsSign.addEventListener('click', function() {
 
   fullNumbers += number.innerHTML + " " + secondNums;
 
-  console.log(fullNumbers)  
   const numResult = calculate(fullNumbers);
 
   number.textContent = numResult
@@ -188,8 +181,7 @@ equalsSign.addEventListener('click', function() {
   storedNums = numResult.toString();
 
   isFirstNum = true;
-
-  console.log(storedNums);
+  
 
 
 })
@@ -226,8 +218,8 @@ function calculate(str) {
 const clearBtn = document.querySelector('.clear-btn');
 
 clearBtn.addEventListener('click', function() {
-  calcClick.currentTime = 0;
-  calcClick.play();
+  calcClick2.currentTime = 0;
+  calcClick2.play();
 
   if (document.querySelector('.sec-num') !== null) {
     number.innerHTML = '';
@@ -247,8 +239,8 @@ clearBtn.addEventListener('click', function() {
 const deleteBtn = document.querySelector('.delete-btn');
 
 deleteBtn.addEventListener('click', function() {
-  calcClick.currentTime = 0;
-  calcClick.play();
+  calcClick2.currentTime = 0;
+  calcClick2.play();
 
   if (isFirstNum === true) {
     storedNums.toString();
@@ -257,7 +249,6 @@ deleteBtn.addEventListener('click', function() {
   
     number.textContent = storedNums;
   
-    console.log(storedNums);
   }
   else {
     secondNums.toString();
@@ -300,3 +291,5 @@ dot.addEventListener('click', function() {
 // AUDIO 
 
 const calcClick = document.querySelector('.calc-click')
+const calcClick2 = document.querySelector('.calc-click-2');
+const calcClick3 = document.querySelector('.calc-click-3');
